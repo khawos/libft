@@ -1,5 +1,3 @@
-#include <string.h>
-#include <stdio.h>
 char	*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
@@ -13,13 +11,4 @@ char	*ft_strcpy(char *dest, const char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-int	main(void)
-{
-	char	src[] = "coucou toi";
-	char	dest[] = "";
-	printf("la fonction :%s\n", strcpy(dest, src));
-	printf("ma fonction :%s", ft_strcpy(dest, src));
-	return (0);
 }

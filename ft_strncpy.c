@@ -1,4 +1,3 @@
-#include <string.h>
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	int	i;
@@ -9,6 +8,7 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0'; //LIGNE A VERIFIER 
 	while (i < n)
 	{
 		dest[i] = '\0';

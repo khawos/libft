@@ -1,3 +1,4 @@
+#include <string.h>
 void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char *ptr;	// be care to the value of c and don t make c to big (>255)

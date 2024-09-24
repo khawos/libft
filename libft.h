@@ -24,13 +24,15 @@ char	*ft_strcat(char *dest, const char *src);
 
 char	*ft_strncat(char *dest, const char *src, size_t n);
 
-
+size_t	ft_strlcat(char	*dst, const char *src, size_t size);
 
 char	*ft_strchr(const char *s, int c);
 
+char	*ft_strrchr(const char *s, int c);
+
 char	*ft_strstr(const char *haystack, const char *needle);
 
-
+char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 int     ft_strcmp(const char *s1, const char *s2);
 
@@ -51,3 +53,19 @@ int	ft_isprint(int c);
 int	ft_toupper(int c);
 
 int	ft_tolower(int c);
+
+void	*ft_memalloc(size_t size);
+
+void	ft_memdel(void **ap);
+
+char	*ft_strnew(size_t size);
+
+char	*ft_strdel(char **as);
+
+void	ft_strclr(char *s);
+
+void	ft_striter(char *s, void (*f)(char *));
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+
+char	*ft_strmap(char const *s, char (*f)(char));

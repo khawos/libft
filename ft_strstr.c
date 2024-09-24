@@ -8,6 +8,10 @@ char	*ft_strstr(const char *haystack, const char *needle)
 
 	i = 0;
 	j = 0;
+	
+	if (*needle == '\0')
+		return ((char *)haystack); //ligne a verifier mais il me semble ok
+
 	while (haystack[i])
 	{
 		c = i;

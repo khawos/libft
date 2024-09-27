@@ -70,11 +70,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 char	*ft_strmap(char const *s, char (*f)(char));
 
-//--
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char)); // not tested
 
-//--
+int	ft_strequ(char	const *s1, char const *s2);
 
-//--
+int	ft_strnequ(char	const *s1, char const *s2, size_t n);
 
 //--
 
@@ -100,4 +100,4 @@ void	ft_putstr_fd(char const *s, int fd);
 
 void	ft_putendl_fd(char const *s);
 
-void	ft_putnbr_fd(int n, int fd);	// A FAIRE
+void	ft_putnbr_fd(int n, int fd);

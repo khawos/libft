@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 00:02:52 by amedenec          #+#    #+#             */
-/*   Updated: 2024/11/11 00:02:52 by amedenec         ###   ########.fr       */
+/*   Created: 2024/11/06 23:44:31 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/06 23:44:31 by amedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*void	f(unsigned int i, char *s)
-{
-	*s += i;
-}*/
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	*ft_memchr(const void *buffer, int c, size_t n)
 {
-	unsigned int	i;
+	unsigned char	*ptr;
 
-	i = 0;
-	while (s[i])
+	ptr = (unsigned char *)buffer;
+	while (n--)
 	{
-		f(i, &s[i]);
-		i++;
+		if (*ptr == (unsigned char)c)
+		{
+			return (ptr);
+		}
+		ptr++;
 	}
-	s[i] = '\0';
+	return (NULL);
 }
-
-/*int	main(void)
-{
-	#include <stdio.h>
-	char	s[] = "0000000000";
-	ft_striteri(s, f);
-	printf("%s", s);
-	return (0);
-}*/

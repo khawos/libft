@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 00:02:52 by amedenec          #+#    #+#             */
-/*   Updated: 2024/11/11 00:02:52 by amedenec         ###   ########.fr       */
+/*   Created: 2024/11/16 06:24:19 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/16 06:24:19 by amedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*void	f(unsigned int i, char *s)
-{
-	*s += i;
-}*/
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
-	s[i] = '\0';
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
 }
-
-/*int	main(void)
-{
-	#include <stdio.h>
-	char	s[] = "0000000000";
-	ft_striteri(s, f);
-	printf("%s", s);
-	return (0);
-}*/

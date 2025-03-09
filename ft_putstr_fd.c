@@ -1,12 +1,23 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/11 00:25:40 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/11 00:25:40 by amedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-void	ft_putstr_fd(char const *s, int fd)
+
+void	ft_putstr_fd(char *s, int fd)
 {
+	size_t	len;
 
-	if (!s)		// peut etre inutile
-		return;
-	int	len;
-
+	if (fd == -1)
+		return ;
 	len = ft_strlen(s);
 	write(fd, s, len);
 }

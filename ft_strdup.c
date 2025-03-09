@@ -1,33 +1,28 @@
-char	*ft_strdup(const char *s)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/07 18:08:55 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/07 18:08:55 by amedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_strdup(char *src)
 {
-	char	*d;
-	int	len;
-	int	i;
+	char	*dest;
+	int		len;
 
-	len = ft_strlen(s);
-	d = malloc((len + 1) * sizeof(char));
-	i = 0;
-	while (s[i])
-	{
-		d[i] = s[i];
-		i++;
-	}
-	d[i] = '\0';
-	return (d);
+	len = ft_strlen(src);
+	dest = malloc((len + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	dest[len] = '\0';
+	while (len--)
+		dest[len] = src[len];
+	return (dest);
 }
-
-//function tested but not optimised
-//CHECK LATER IN 42
-//please check if the string is empty whats happened to
-//maybe u need a null byte at the and or not idk
-
-//int	main(void)
-//{
-//	#include <stdio.h>
-//	char	str[] = "pioncer";
-//	char	*dest;
-//	int	i = 0;
-//	dest = ft_strdup(str);
-//	printf("%s", dest);
-//	return (0);
-//}

@@ -1,27 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/06 23:54:48 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/06 23:54:48 by amedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <string.h>
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char *s3;
-	const unsigned char *s4;
-	s3 = s1;
-	s4 = s2;
-	while (n > 0 && *s3 == *s4)
+	const unsigned char	*sb1;
+	const unsigned char	*sb2;
+
+	sb1 = s1;
+	sb2 = s2;
+	while (n--)
 	{
-		s3++;
-		s4++;
-		n--;
+		if (*sb1 != *sb2)
+			return (*sb1 - *sb2);
+		sb1++;
+		sb2++;
 	}
-	if (n == 0)
-		return (0);
-	return (*s3 - *s4);
+	return (0);
 }
-
-//int	main(void)
-//{
-//	char buffer1[] = "hello";
-//	char buffer2[] = "hello";
-//	char buffer3[] = "hellp";
-//	printf("Test 1: %d\n", ft_memcmp(buffer1, buffer2, 5));
-//	printf("Test 2: %d\n", ft_memcmp(buffer1, buffer3, 5));
-//	return (0);
-//}
-

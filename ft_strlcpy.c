@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 00:02:52 by amedenec          #+#    #+#             */
-/*   Updated: 2024/11/11 00:02:52 by amedenec         ###   ########.fr       */
+/*   Created: 2024/11/07 04:05:05 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/07 04:05:05 by amedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*void	f(unsigned int i, char *s)
-{
-	*s += i;
-}*/
+#include <string.h>
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
+	size_t	i;
 
+	if (size == 0)
+		return (ft_strlen(src));
 	i = 0;
-	while (s[i])
+	while ((i < size - 1) && src[i])
 	{
-		f(i, &s[i]);
+		dest[i] = src[i];
 		i++;
 	}
-	s[i] = '\0';
+	dest[i] = '\0';
+	return (ft_strlen(src));
 }
-
-/*int	main(void)
-{
-	#include <stdio.h>
-	char	s[] = "0000000000";
-	ft_striteri(s, f);
-	printf("%s", s);
-	return (0);
-}*/

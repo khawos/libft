@@ -1,47 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 23:31:59 by amedenec          #+#    #+#             */
-/*   Updated: 2024/11/10 23:31:59 by amedenec         ###   ########.fr       */
+/*   Created: 2024/11/08 05:11:51 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/08 05:11:51 by amedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*char	f(unsigned int i, char c)
+char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
-	c += 1;
-	return (c);
-}*/
+	size_t		y;
+	size_t		str_len;
+	char		*tmp;
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	size_t			len;
-	char			*dest;
-	unsigned int	i;
-
-	i = 0;
-	len = ft_strlen(s);
-	dest = malloc((len + 1) * sizeof(char));
-	if (!dest)
+	y = 0;
+	str_len = ft_strlen(str);
+	if (start >= str_len)
+		len = 0;
+	else if (len > str_len - start)
+		len = str_len - start;
+	tmp = malloc(len + 1);
+	if (!tmp)
 		return (NULL);
-	while (s[i])
+	while (y < len)
 	{
-		dest[i] = f(i, s[i]);
-		i++;
+		tmp[y] = str[start + y];
+		y++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	tmp[y] = '\0';
+	return (tmp);
 }
 
-/*int	main(void)
-{
-	#include <stdio.h>
-	char	s[] = "salut la team";
-	printf("%s", ft_strmapi(s, f));
+/*int main()
+{	
+	char* test = ft_substr("salut la team", 6, 2);
+	printf("%s", test);
 	return (0);
 }*/

@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 00:02:52 by amedenec          #+#    #+#             */
-/*   Updated: 2024/11/11 00:02:52 by amedenec         ###   ########.fr       */
+/*   Created: 2024/11/16 04:59:06 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/16 04:59:06 by amedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*void	f(unsigned int i, char *s)
-{
-	*s += i;
-}*/
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
-{
-	unsigned int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
-	s[i] = '\0';
+t_list	*ft_lstlast(t_list *lst)
+{	
+	while (lst && lst->next)
+		lst = lst->next;
+	return (lst);
 }
-
-/*int	main(void)
-{
-	#include <stdio.h>
-	char	s[] = "0000000000";
-	ft_striteri(s, f);
-	printf("%s", s);
-	return (0);
-}*/

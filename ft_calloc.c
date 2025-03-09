@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 00:02:52 by amedenec          #+#    #+#             */
-/*   Updated: 2024/11/11 00:02:52 by amedenec         ###   ########.fr       */
+/*   Created: 2024/11/07 17:53:54 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/07 17:53:54 by amedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*void	f(unsigned int i, char *s)
-{
-	*s += i;
-}*/
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned int	i;
+	void	*buffer;
 
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
-	s[i] = '\0';
+	if (size != 0 && nmemb > (size_t) - 1 / size)
+		return (NULL);
+	buffer = malloc(nmemb * size);
+	if (!buffer)
+		return (NULL);
+	ft_memset(buffer, 0, nmemb * size);
+	return (buffer);
 }
 
 /*int	main(void)
 {
-	#include <stdio.h>
-	char	s[] = "0000000000";
-	ft_striteri(s, f);
-	printf("%s", s);
-	return (0);
+	char	*dest;
+
+	dest = calloc(len + 1, sizeof(int))
 }*/

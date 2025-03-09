@@ -1,34 +1,62 @@
-#include <stdlib.h>
-#include "libft.h"
-char	*ft_strtrim(char const *s)	// ce code marche est repsect la norme mais  est tres peut lisible a cause des tout les - 1 
-{					// bref il y a surement plus beau a faire
-	int	i;
-	int	len;
-	int	end;
-	char	*dest;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/10 17:40:14 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/10 17:40:14 by amedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	i  = 0;
-	len = ft_strlen(s);
-	end = len;
-	while (s[i] == ' ' || s[i] == ',' || s[i] == '\n' || s[i] == '\t')
+#include "libft.h"
+
+static int	is_in_set(char c, char const *set)
+{
+	while (*set)
+	{
+		if (c == *set)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+
+char	*ft_strtrim(char const *s, char const *set)
+{
+	size_t	len_s;
+	size_t	i;
+	char	*dest;
+	size_t	c;
+
+	len_s = ft_strlen(s);
+	i = 0;
+	c = 0;
+	while (s[i] && is_in_set(s[i], set))
+	{
 		i++;
-	while (s[end - 1] == ' ' || s[end - 1] == ',' || s[end - 1] == '\n' || s[end - 1] == '\t')
-		end--;
-	dest = (char *)malloc((len - i - (len - end) + 1) * sizeof(char));
+		c++;
+	}
+	while (len_s > c && is_in_set(s[len_s - 1], set))
+		len_s--;
+	if (c > len_s)
+		return (NULL);
+	dest = malloc((len_s - c + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
-	dest[len] = '\0';
-	len = 0;
-	while (i < end)
-		dest[len++] = s[i];
-
+	i = 0;
+	while (c < len_s)
+		dest[i++] = s[c++];
+	dest[i] = '\0';
 	return (dest);
 }
 
-//int	main(void)
-//{
-//	#include <stdio.h>
-//	char	str[] = "";
-//	printf("%s", ft_strtrim(str));
-//	return (0);
-//}
+/*int	main(void)
+{
+	#include <stdio.h>
+	char	s[] = "   xx   xxx";
+	char	set[] = " x";
+	printf("%s", ft_strtrim(s, set));
+	return (0);
+}*/

@@ -1,47 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 23:31:59 by amedenec          #+#    #+#             */
-/*   Updated: 2024/11/10 23:31:59 by amedenec         ###   ########.fr       */
+/*   Created: 2024/11/10 16:37:16 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/10 16:37:16 by amedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*char	f(unsigned int i, char c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	c += 1;
-	return (c);
-}*/
+	size_t	len_s1;
+	size_t	len_s2;
+	int		i;
+	int		d;
+	char	*dest;
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	size_t			len;
-	char			*dest;
-	unsigned int	i;
-
-	i = 0;
-	len = ft_strlen(s);
-	dest = malloc((len + 1) * sizeof(char));
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	dest = malloc((len_s1 + len_s2 + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
-	while (s[i])
+	i = 0;
+	d = 0;
+	while (s1[i])
 	{
-		dest[i] = f(i, s[i]);
+		dest[i] = s1[i];
 		i++;
+		d++;
 	}
-	dest[i] = '\0';
+	i = -1;
+	while (s2[++i])
+		dest[i + d] = s2[i];
+	dest[i + d] = '\0';
 	return (dest);
 }
 
 /*int	main(void)
 {
 	#include <stdio.h>
-	char	s[] = "salut la team";
-	printf("%s", ft_strmapi(s, f));
+	char	*s1;
+	char	*s2;
+
+	s1 = "Salut la team";
+	s2 = " comment ca va";
+	printf("%s", ft_strjoin(s1, s2));
 	return (0);
 }*/

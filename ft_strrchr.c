@@ -1,22 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amedenec <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/06 23:20:11 by amedenec          #+#    #+#             */
+/*   Updated: 2024/11/06 23:20:11 by amedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
-#include <stdio.h>
-char	*ft_strrchr(const char *s, int c)
+
+char	*ft_strrchr(const char *string, int c)
 {
 	char	*d;
 
 	d = NULL;
-	while (*s)
+	while (*string)
 	{
-		if (*s == c)
-			d = (char *)s;
-		s++;
+		if (*string == (char)c)
+			d = (char *)string;
+		string++;
+	}
+	if (*string == (char)c)
+	{
+		d = (char *)string;
 	}
 	return (d);
 }
-
-//int	main(void)
-//{
-//	char	str[] = "salut la team";
-//	printf("%s", ft_strrchr(str, 'a'));
-//	return (0);
-//}
